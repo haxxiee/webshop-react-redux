@@ -1,11 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Products from "./components/Products";
-import Product from "./components/Product";
-import Cart from "./components/Cart";
-import ErrorPage from "./components/ErrorPage";
-import Home from "./components/Home";
+import Header from "./components/Header/Header";
+import Products from "./components/Products/Products";
+import Product from "./components/Products/Product/Product";
+import Cart from "./components/Cart/Cart";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
+import HomePage from "./components/HomePage/Home";
+const data = require("./fakedata/fakedata.json"); // Get fakedata
 
 function App() {
   return (
@@ -13,11 +14,11 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/" exact element={<HomePage />} />
           <Route path="/products" exact element={<Products />} />
           <Route path="/product/:id" exact element={<Product />} />
           <Route path="/cart" exact element={<Cart />} />
-          <Route path="*" elemen={<ErrorPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </div>
