@@ -5,7 +5,6 @@ import Product from "./components/Products/Product/Product";
 import Cart from "./components/Cart/Cart";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import HomePage from "./components/HomePage/Home";
-const data = require("./fakedata/fakedata.json"); // Get fakedata
 
 function App() {
   return (
