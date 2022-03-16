@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
 import Product from "./components/Products/Product/Product";
@@ -10,6 +11,10 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <ToastContainer
+          autoClose={1600}
+          toastStyle={{ backgroundColor: "#303030", color: "white" }}
+        />
         <Header />
         <Routes>
           <Route path="/" exact element={<HomePage />} />

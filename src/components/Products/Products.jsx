@@ -4,12 +4,14 @@ import Product from "./Product/Product";
 import styles from "./Products.module.scss";
 
 const Products = ({ products }) => {
-  console.log(products);
   return (
-    <div className={styles.product__grid}>
-      {products.map((item) => (
-        <Product key={item.id} product={item} />
-      ))}
+    <div className={styles.products__container}>
+      <h1>Products</h1>
+      <div className={styles.product__grid}>
+        {products.map((item) => (
+          <Product key={item.id} product={item} />
+        ))}
+      </div>
     </div>
   );
 };

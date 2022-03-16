@@ -1,17 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { addToCart } from "../../../redux/actions";
 import styles from "./Product.module.scss";
 
 const Product = ({ product, addToCart }) => {
   const [qty, setQty] = useState(1);
 
-  const onChangeHandler = (e) => {
-    setQty(e.target.value);
-  };
-
-  // console.log(typeof qty);
+  const notify = () =>
+    toast.success("Added to cart", { position: "bottom-right" });
 
   return (
     <div className={styles.card}>
@@ -22,17 +21,23 @@ const Product = ({ product, addToCart }) => {
         <h2>{product.title}</h2>
         <h1>{product.price} $</h1>
         <p>{product.description}</p>
-        <button onClick={() => addToCart(product.id, qty)}>Add to Cart</button>
-        <label>qty:</label>
+        <button
+          onClick={() => {
+            addToCart(product.id, qty);
+            setQty(1);
+            notify();
+          }}
+        >
+          Add to Cart
+        </button>
+        <label>QTY:</label>
         <input
           type="number"
           min="1"
-          max="5"
+          max="10"
           value={qty}
-          onChange={onChangeHandler}
+          onChange={(e) => setQty(e.target.value)}
         />
-
-        <button>Test</button>
       </div>
     </div>
   );

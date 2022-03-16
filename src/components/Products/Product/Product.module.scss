@@ -1,8 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500,700);
-
 .card {
-  width: 650px;
-  height: 320px;
+  width: 450px;
+  height: 220px;
   display: flex;
   justify-content: center;
   background: white;
@@ -29,7 +27,7 @@
   }
 
   .description {
-    padding: 30px;
+    padding: 15px 15px;
     float: left;
     width: 55%;
     border-left: 2px solid #efefef;
@@ -39,7 +37,7 @@
       font-weight: 300;
       padding-top: 15px;
       margin: 0;
-      font-size: 30px;
+      font-size: 24px;
       font-weight: 300;
     }
 
@@ -48,27 +46,18 @@
       margin: 0;
       text-transform: uppercase;
       font-weight: 500;
-      font-size: 20px;
-    }
-
-    h4 {
-      margin: 0;
-      color: #727272;
-      text-transform: uppercase;
-      font-weight: 500;
-      font-size: 12px;
+      font-size: 14px;
+      text-align: center;
     }
 
     p {
       font-size: 12px;
-      line-height: 20px;
+      line-height: 10px;
       color: #727272;
-      padding: 20px 0;
+      padding: 10px 0;
       margin: 0;
 
       text-overflow: ellipsis;
-
-      /* Required for text-overflow to do anything */
       white-space: nowrap;
       overflow: hidden;
     }
@@ -79,10 +68,10 @@
       background: none;
       border: 1px solid #d9d9d9;
       padding: 8px 0px;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       color: #515151;
       text-transform: uppercase;
-      width: 125px;
+      width: 115px;
       font-family: inherit;
       margin-right: 5px;
       transition: all 0.3s ease;
@@ -94,6 +83,19 @@
         color: #aedaa6;
         cursor: pointer;
       }
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #515151;
+      margin-left: 0.75rem;
+    }
+
+    input {
+      font-size: 14px;
+      width: 2.2rem;
+      margin: 0 0.255rem;
     }
   }
 }
