@@ -1,7 +1,21 @@
 import React from "react";
+import { connect } from "react-redux";
+import Product from "./Product/Product";
+import styles from "./Products.module.scss";
 
-const Products = () => {
-  return <div>Products</div>;
+const Products = ({ products }) => {
+  console.log(products);
+  return (
+    <div className={styles.product__grid}>
+      {products.map((item) => (
+        <Product key={item.id} product={item} />
+      ))}
+    </div>
+  );
 };
 
-export default Products;
+const mapStateToProps = (state) => {
+  return { products: state.shop.products };
+};
+
+export default connect(mapStateToProps)(Products);

@@ -10,9 +10,30 @@ const INITAL_STATE = {
 const webshopReducer = (state = INITAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
-      return {};
+      const item = state.products.find((item) => item.id === action.payload.id);
+      const inCart = state.cart.some((item) => item.id === action.payload.id);
+
+      console.log(typeof action.payload.qty);
+
+      return {
+        ...state,
+        cart: inCart
+          ? state.cart.map((item) =>
+              item.id === action.payload.id
+                ? { ...item, qty: item.qty + parseInt(action.payload.qty) }
+                : item
+            )
+          : [...state.cart, { ...item, qty: parseInt(action.payload.qty) }],
+      };
     case actionTypes.REMOVE_FROM_CART:
-      return {};
+      return {
+        // ...state,
+        // cart: state.cart.map((item) =>
+        //   item.id === action.payload.id
+        //     ? { ...item, qty: action.payload.value }
+        //     : item
+        // ),
+      };
     case actionTypes.CHANGE_QTY:
       return {};
     default:
