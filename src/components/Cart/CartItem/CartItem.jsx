@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import styles from "./CartItem.module.scss";
-import { removeFromCart } from "../../../redux/actions";
+import { removeFromCart, changeQty } from "../../../redux/actions";
 
-const CartItem = ({ product, removeFromCart }) => {
+const CartItem = ({ product, removeFromCart, changeQty }) => {
+  const [qty, setQty] = useState(product.qty);
+
   return (
     <div className={styles.cartitem__container}>
       <div className={styles.image__container}>
@@ -20,7 +22,16 @@ const CartItem = ({ product, removeFromCart }) => {
           </button>
           <div className={styles.input__label}>
             <label>QTY:</label>
-            <input type="number" min="1" max="10" />
+            <input
+              type="number"
+              min="1"
+              max="10"
+              value={qty}
+              onChange={(e) => {
+                setQty(e.target.value);
+                changeQty(product.id, parseInt(e.target.value));
+              }}
+            />
           </div>
         </div>
       </div>
@@ -31,6 +42,7 @@ const CartItem = ({ product, removeFromCart }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     removeFromCart: (id) => dispatch(removeFromCart(id)),
+    changeQty: (id, qty) => dispatch(changeQty(id, qty)),
   };
 };
 

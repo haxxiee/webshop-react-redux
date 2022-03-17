@@ -29,7 +29,14 @@ const webshopReducer = (state = INITAL_STATE, action) => {
         cart: state.cart.filter((item) => item.id !== action.payload.id),
       };
     case actionTypes.CHANGE_QTY:
-      return {};
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.id === action.payload.id
+            ? { ...item, qty: action.payload.qty }
+            : item
+        ),
+      };
     default:
       return state;
   }
