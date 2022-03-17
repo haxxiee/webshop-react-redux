@@ -2,23 +2,38 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import styles from "./CartItem.module.scss";
 import { removeFromCart, changeQty } from "../../../redux/actions";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ product, removeFromCart, changeQty }) => {
   const [qty, setQty] = useState(product.qty);
 
   return (
     <div className={styles.cartitem__container}>
-      <div className={styles.image__container}>
-        <img src={product.image} alt="test" />
-      </div>
+      <Link
+        to={`/product/${product.id}`}
+        style={{ color: "inherit", textDecoration: "inherit" }}
+      >
+        <div className={styles.image__container}>
+          <img src={product.image} alt="test" />
+        </div>
+      </Link>
       <div className={styles.product__info}>
-        <h2>{product.title}</h2>
-        <h1>$ {product.price}</h1>
-        <p>{product.description}</p>
-
+        <Link
+          to={`/product/${product.id}`}
+          style={{ color: "inherit", textDecoration: "inherit" }}
+        >
+          <h2>{product.title}</h2>
+          <h1>$ {product.price}</h1>
+          <p>{product.description}</p>
+        </Link>
         <div className={styles.input__container}>
-          <button onClick={() => removeFromCart(parseInt(product.id))}>
-            Remove from cart
+          <button
+            onClick={(e) => {
+              removeFromCart(parseInt(product.id));
+              e.preventDefault();
+            }}
+          >
+            Remove
           </button>
           <div className={styles.input__label}>
             <label>QTY:</label>
@@ -30,7 +45,9 @@ const CartItem = ({ product, removeFromCart, changeQty }) => {
               onChange={(e) => {
                 setQty(e.target.value);
                 changeQty(product.id, parseInt(e.target.value));
+                e.preventDefault();
               }}
+              onClick={(e) => e.preventDefault()}
             />
           </div>
         </div>

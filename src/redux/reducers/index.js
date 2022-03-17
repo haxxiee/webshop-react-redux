@@ -4,7 +4,9 @@ const products = require("../../fakedata/fakedata.json");
 
 const INITAL_STATE = {
   products: products,
-  cart: [],
+  cart: localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [],
 };
 
 const webshopReducer = (state = INITAL_STATE, action) => {

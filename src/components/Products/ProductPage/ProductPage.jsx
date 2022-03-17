@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router";
 import styles from "./ProductPage.module.scss";
 import { toast } from "react-toastify";
 import { connect } from "react-redux";
-
 import { addToCart } from "../../../redux/actions";
 
-const ProductPage = ({ products, addToCart }) => {
+const ProductPage = ({ products, addToCart, cart }) => {
   const [qty, setQty] = useState(1);
   const param = useParams();
 
@@ -15,6 +14,10 @@ const ProductPage = ({ products, addToCart }) => {
 
   const notify = () =>
     toast.success("Added to cart", { position: "bottom-right" });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [addToCart, cart]);
 
   return (
     <div className={styles.productpage__container}>
@@ -54,7 +57,7 @@ const ProductPage = ({ products, addToCart }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { products: state.shop.products };
+  return { products: state.shop.products, cart: state.shop.cart };
 };
 
 const mapDispatchToProps = (dispatch) => {
