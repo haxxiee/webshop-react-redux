@@ -13,8 +13,6 @@ const webshopReducer = (state = INITAL_STATE, action) => {
       const item = state.products.find((item) => item.id === action.payload.id);
       const inCart = state.cart.some((item) => item.id === action.payload.id);
 
-      console.log(typeof action.payload.qty);
-
       return {
         ...state,
         cart: inCart
@@ -27,12 +25,8 @@ const webshopReducer = (state = INITAL_STATE, action) => {
       };
     case actionTypes.REMOVE_FROM_CART:
       return {
-        // ...state,
-        // cart: state.cart.map((item) =>
-        //   item.id === action.payload.id
-        //     ? { ...item, qty: action.payload.value }
-        //     : item
-        // ),
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload.id),
       };
     case actionTypes.CHANGE_QTY:
       return {};

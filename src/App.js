@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
-import Product from "./components/Products/Product/Product";
+import ProductPage from "./components/Products/ProductPage/ProductPage";
 import Cart from "./components/Cart/Cart";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import HomePage from "./components/HomePage/Home";
@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<HomePage />} />
           <Route path="/products" exact element={<Products />} />
-          <Route path="/product" exact element={<Product />} />
+          <Route path="/product/:id" exact element={<ProductPage />} />
           <Route path="/cart" exact element={<Cart />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

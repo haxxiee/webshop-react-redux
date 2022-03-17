@@ -1,7 +1,9 @@
 .products__container {
   h1 {
     text-align: center;
-    color: #515151;
+
+    font-size: 40px;
+    // color: #515151;
 
     margin-top: 2rem;
   }
@@ -12,7 +14,8 @@
 
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
-    margin: 4rem 2rem;
+    margin: 4rem 1.55rem;
   }
 }

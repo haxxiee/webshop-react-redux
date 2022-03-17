@@ -9,3 +9,22 @@ export const addToCart = (itemId, qty) => {
     },
   };
 };
+
+export const removeFromCart = (itemId) => {
+  return {
+    type: actionTypes.REMOVE_FROM_CART,
+    payload: {
+      id: itemId,
+    },
+  };
+};
+
+export const changeQty = (itemId, qty) => {
+  return {
+    type: actionTypes.CHANGE_QTY,
+    payload: {
+      id: itemId,
+      qty: qty,
+    },
+  };
+};

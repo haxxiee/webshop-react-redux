@@ -6,7 +6,7 @@ import styles from "./Products.module.scss";
 const Products = ({ products }) => {
   return (
     <div className={styles.products__container}>
-      <h1>Products</h1>
+      <h1>All Products</h1>
       <div className={styles.product__grid}>
         {products.map((item) => (
           <Product key={item.id} product={item} />

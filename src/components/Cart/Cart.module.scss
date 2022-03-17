@@ -1,0 +1,15 @@
+.cart__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 100%;
+  margin: 4rem auto;
+
+  .cart__item__container {
+  }
+
+  .cart__info {
+    min-width: 30%;
+  }
+}
