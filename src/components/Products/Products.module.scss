@@ -1,4 +1,7 @@
+@import "../../styles/variables.scss";
+
 .products__container {
+  animation: fadeIn 0.4s;
   h1 {
     text-align: center;
 
@@ -9,13 +12,12 @@
   }
 
   .product__grid {
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); */
-
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
     margin: 4rem 1.55rem;
+
+    animation: bottomToTop 0.5s;
   }
 }
