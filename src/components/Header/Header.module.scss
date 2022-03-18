@@ -1,7 +1,43 @@
 .header {
-  background-color: aqua;
+  /* background-color: aqua; */
 
-  h1 {
-    color: blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 auto;
+  padding: 1rem 3rem;
+  max-width: 110rem;
+
+  .logo {
+    font-size: 30px;
+    font-weight: 500;
   }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 18px;
+
+    li {
+      display: inline-block;
+      padding: 0 2.2rem;
+    }
+  }
+  a {
+    text-decoration: none;
+    /* color: white; */
+    color: black;
+  }
+}
+
+.header__wrapper {
+  /* background-color: #222; */
+  border-bottom: 1px solid #ddd;
+
+  /* position: fixed;
+  top: 0;
+  width: 100%; */
 }

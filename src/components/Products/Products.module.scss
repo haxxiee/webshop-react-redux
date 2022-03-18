@@ -9,8 +9,8 @@
   }
 
   .product__grid {
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); */
 
     display: flex;
     flex-wrap: wrap;
