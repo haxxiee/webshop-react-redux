@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
 import ProductPage from "./components/Products/ProductPage/ProductPage";
 import Cart from "./components/Cart/Cart";
-import ErrorPage from "./components/ErrorPage/ErrorPage";
 import HomePage from "./components/HomePage/Home";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
           <Route path="/products" exact element={<Products />} />
           <Route path="/product/:id" exact element={<ProductPage />} />
           <Route path="/cart" exact element={<Cart />} />
-          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </div>
