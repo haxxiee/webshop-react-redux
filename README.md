@@ -1,8 +1,9 @@
 # Webshop with React
 
 Made with NodeJS, React, Redux and SASS. Items saved on LocalStorage.
-Link to live version below.
-[https://elegant-colden-40f10b.netlify.app](https://elegant-colden-40f10b.netlify.app/)
+Link to live version below. <br>[https://elegant-colden-40f10b.netlify.app](https://elegant-colden-40f10b.netlify.app/)
+
+##Available Scripts
 
 ### `npm start`
 
