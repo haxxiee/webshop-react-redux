@@ -1,4 +1,4 @@
-# Webshop made with React and Redux
+# Webshop with React
 
 Made with NodeJS, React, Redux and SASS
 
