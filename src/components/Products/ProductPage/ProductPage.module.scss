@@ -17,20 +17,66 @@
     margin: 10px 50px;
     min-width: 30rem;
     text-align: center;
+    @include lg {
+      min-width: 20rem;
+    }
+    @include md {
+      min-width: 14rem;
+    }
+    @include sm {
+      margin: 0 0;
+    }
+
     img {
       max-width: 30rem;
       border-radius: 10px;
       object-fit: cover;
+
+      @include lg {
+        max-width: 20rem;
+      }
+      @include md {
+        max-width: 14rem;
+      }
+      @include sm {
+        max-width: 10rem;
+      }
     }
   }
 
   .product__info {
     margin-left: 3rem;
+    margin-right: 1rem;
 
     animation: rightToLeft 0.4s;
 
+    @include lg {
+      margin-left: 1rem;
+    }
+
+    @include md {
+      margin-left: 0;
+    }
+
     h1 {
       margin: 1rem 0;
+
+      @include md {
+        font-size: 30px;
+        margin: 0.5rem 0;
+      }
+    }
+
+    h2 {
+      @include sm {
+        font-size: 20px;
+      }
+    }
+
+    p {
+      @include md {
+        font-size: 12px;
+      }
     }
 
     .input__container {

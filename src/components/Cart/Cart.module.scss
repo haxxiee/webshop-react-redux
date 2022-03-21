@@ -9,9 +9,13 @@
 
   animation: fadeIn 0.5s;
 
+  @include sm {
+    display: block;
+  }
+
   h1 {
-    margin-left: 22rem;
-    margin-bottom: auto;
+    /* margin-left: 22rem; */
+    /* margin-bottom: auto; */
   }
 
   .cart__item__container {
@@ -28,13 +32,28 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 1rem 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 10px;
     background-color: white;
 
-    margin-left: 3rem;
+    margin-left: 2rem;
+    margin-right: 1rem;
     margin-bottom: auto;
+
+    @include lg {
+      box-shadow: none;
+      padding: 0 0;
+      justify-content: start;
+
+      margin-left: 0.5rem;
+      margin-right: 1rem;
+    }
+
+    @include sm {
+      justify-content: center;
+      align-items: center;
+    }
 
     button {
       outline: 0;

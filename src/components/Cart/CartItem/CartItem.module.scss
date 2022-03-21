@@ -1,3 +1,4 @@
+@import "../../../styles/variables.scss";
 .cartitem__container {
   display: flex;
 
@@ -14,6 +15,27 @@
     img {
       width: 10rem;
       border-radius: 10px;
+      @include md {
+        width: 9rem;
+      }
+    }
+  }
+  h1 {
+    @include md {
+      font-weight: 500;
+      font-size: 25px;
+    }
+  }
+  h2 {
+    @include md {
+      font-weight: 500;
+      font-size: 20px;
+    }
+  }
+
+  p {
+    @include md {
+      display: none;
     }
   }
 
