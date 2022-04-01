@@ -1,6 +1,6 @@
+import { connect } from "react-redux";
+import { postSignIn, signOut } from "../../redux/actions";
 import styles from "./Home.module.scss";
-
-import React from "react";
 
 const HomePage = () => {
   return (
@@ -32,4 +32,8 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+const mapStateToProps = (state) => {
+  return { token: state.auth.token };
+};
+
+export default connect(mapStateToProps, { postSignIn, signOut })(HomePage);

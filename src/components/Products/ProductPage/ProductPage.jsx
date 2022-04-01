@@ -57,7 +57,7 @@ const ProductPage = ({ products, addToCart, cart }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { products: state.shop.products, cart: state.shop.cart };
+  return { products: state.shop.productsShowing, cart: state.shop.cart };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,16 +1,58 @@
 import * as actionTypes from "../types";
 import { combineReducers } from "redux";
-const products = require("../../fakedata/fakedata.json");
 
-const INITAL_STATE = {
-  products: products,
+const INITAL_STATE_WEBSHOP = {
+  products: [],
   cart: localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [],
+  productsShowing: [],
 };
 
-const webshopReducer = (state = INITAL_STATE, action) => {
+const INITAL_STATE_USERS = {
+  users: [],
+  currentUser: {
+    address: {
+      city: "",
+      street: "",
+      number: 0,
+      zipcode: "",
+    },
+    id: 0,
+    role: "",
+    email: "",
+    username: "",
+    password: "",
+    name: {
+      firstname: "",
+      lastname: "",
+    },
+    phone: "",
+  },
+};
+
+const INITAL_STATE_AUTH = {
+  token: null,
+  userId: null,
+};
+
+const webshopReducer = (state = INITAL_STATE_WEBSHOP, action) => {
   switch (action.type) {
+    case actionTypes.FETCH_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+        productsShowing: action.payload,
+      };
+    case actionTypes.FILTER_PRODUCTS:
+      return {
+        ...state,
+        productsShowing: action.payload.category
+          ? state.products.filter(
+              (item) => item.category === action.payload.category
+            )
+          : state.products,
+      };
     case actionTypes.ADD_TO_CART:
       const item = state.products.find((item) => item.id === action.payload.id);
       const inCart = state.cart.some((item) => item.id === action.payload.id);
@@ -44,6 +86,52 @@ const webshopReducer = (state = INITAL_STATE, action) => {
   }
 };
 
+const userReducer = (state = INITAL_STATE_USERS, action) => {
+  switch (action.type) {
+    case actionTypes.FETCH_USERS:
+      return { ...state, users: action.payload };
+    case actionTypes.ADD_USER:
+      return null;
+    case actionTypes.GET_USER:
+      const user = state.users.find((user) => user.id === action.payload.id);
+      return {
+        ...state,
+        currentUser: user,
+      };
+    case actionTypes.UPDATE_USER_INFO:
+      console.log(action.payload.addressInfo);
+      return {
+        ...state,
+        users: state.users.map((item) =>
+          item.id === action.payload.id
+            ? {
+                ...item,
+                phone: action.payload.phone,
+                address: action.payload.addressInfo,
+              }
+            : item
+        ),
+      };
+
+    default:
+      return state;
+  }
+};
+
+const authReducer = (state = INITAL_STATE_AUTH, action) => {
+  switch (action.type) {
+    case actionTypes.POST_SIGN_IN:
+      return action.payload;
+    case actionTypes.SIGN_OUT:
+      return action.payload;
+
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   shop: webshopReducer,
+  users: userReducer,
+  auth: authReducer,
 });
