@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import styles from "./LoginModal.module.scss";
-import { postSignIn } from "../../../redux/actions";
+import { postSignIn, getUser } from "../../../redux/actions";
 
-const LoginModal = ({ open, onClose, postSignIn }) => {
+const LoginModal = ({ auth, open, onClose, postSignIn, getUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  useEffect(() => {
+    if (auth.userId !== null) {
+      getUser(auth.userId);
+    }
+  }, [auth.userId]);
+
   if (!open) return null;
 
   const onLoginClickHandler = (username, password) => {
@@ -45,4 +51,8 @@ const LoginModal = ({ open, onClose, postSignIn }) => {
   );
 };
 
-export default connect(null, { postSignIn })(LoginModal);
+const mapsStateToProps = (state) => {
+  return { auth: state.auth };
+};
+
+export default connect(mapsStateToProps, { postSignIn, getUser })(LoginModal);

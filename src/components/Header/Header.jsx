@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { signOut } from "../../redux/actions";
+import { signOut, resetCurrentUser } from "../../redux/actions";
 import LoginModal from "../Modals/LoginModal/LoginModal";
 import SignupModal from "../Modals/SignupModal/SignupModal";
 import styles from "./Header.module.scss";
 
-const Header = ({ auth, signOut }) => {
+const Header = ({ auth, user, signOut, resetCurrentUser }) => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
 
@@ -19,7 +19,14 @@ const Header = ({ auth, signOut }) => {
       );
     } else {
       return (
-        <button onClick={() => signOut()} className="">
+        <button
+          onClick={() => {
+            resetCurrentUser();
+
+            signOut();
+          }}
+          className=""
+        >
           Sign Out
         </button>
       );
@@ -35,15 +42,28 @@ const Header = ({ auth, signOut }) => {
         </Link>
         <nav>
           <ul>
-            <li>
-              <Link to={"/"}>Home</Link>
-            </li>
-            <li>
-              <Link to={"/products"}>Products</Link>
-            </li>
-            <li>
-              <Link to={"/cart"}>Cart</Link>
-            </li>
+            {user.role !== "admin" && (
+              <li>
+                <Link to={"/"}>Home</Link>
+              </li>
+            )}
+            {user.role !== "admin" && (
+              <li>
+                <Link to={"/products"}>Products</Link>
+              </li>
+            )}
+            {user.role !== "admin" && (
+              <li>
+                <Link to={"/cart"}>Cart</Link>
+              </li>
+            )}
+
+            {user.role === "admin" && (
+              <li>
+                <Link to={"/admin"}>Admin Page</Link>
+              </li>
+            )}
+
             {auth.token && (
               <li>
                 <Link to={"/account"}>Account</Link>
@@ -78,7 +98,7 @@ const Header = ({ auth, signOut }) => {
 };
 
 const mapsStateToProps = (state) => {
-  return { auth: state.auth };
+  return { auth: state.auth, user: state.users.currentUser };
 };
 
-export default connect(mapsStateToProps, { signOut })(Header);
+export default connect(mapsStateToProps, { signOut, resetCurrentUser })(Header);

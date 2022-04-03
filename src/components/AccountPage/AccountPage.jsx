@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { getUser, updateUser } from "../../redux/actions";
+import styles from "./AccountPage.module.scss";
 
 const AccountPage = ({ auth, user, getUser, updateUser }) => {
   const [userState, setUserState] = useState({

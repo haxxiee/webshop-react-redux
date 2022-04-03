@@ -31,6 +31,12 @@ export const changeQty = (itemId, qty) => {
   };
 };
 
+export const fetchCarts = () => async (dispatch) => {
+  const response = await fakeStore.get("/carts");
+
+  dispatch({ type: actionTypes.FETCH_CARTS, payload: response.data });
+};
+
 // PRODUCT ACTIONS
 export const fetchProducts = () => async (dispatch) => {
   const response = await fakeStore.get("/products");
@@ -43,6 +49,15 @@ export const filterProducts = (category) => {
     type: actionTypes.FILTER_PRODUCTS,
     payload: {
       category: category,
+    },
+  };
+};
+
+export const removeProduct = (id) => {
+  return {
+    type: actionTypes.REMOVE_PRODUCT,
+    payload: {
+      id: id,
     },
   };
 };
@@ -74,6 +89,13 @@ export const addUser = (info) => async (dispatch) => {
   });
 
   dispatch({ type: actionTypes.ADD_USER, payload: response.data });
+};
+
+export const resetCurrentUser = () => {
+  return {
+    type: actionTypes.RESET_CURRENT_USER,
+    payload: {},
+  };
 };
 
 export const getUser = (userId) => {

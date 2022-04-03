@@ -16,7 +16,7 @@ const Products = ({ products, cart, filterProducts }) => {
   return (
     <div className={styles.products__container}>
       <h1>Products</h1>
-      <div class="box">
+      <div>
         <select onChange={(e) => filterProducts(e.target.value)}>
           <option value={""}>All</option>
           <option value={"women's clothing"}>Women's Clothing</option>

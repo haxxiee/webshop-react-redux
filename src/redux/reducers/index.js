@@ -6,6 +6,7 @@ const INITAL_STATE_WEBSHOP = {
   cart: localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [],
+  userCarts: [],
   productsShowing: [],
 };
 
@@ -53,6 +54,18 @@ const webshopReducer = (state = INITAL_STATE_WEBSHOP, action) => {
             )
           : state.products,
       };
+    case actionTypes.REMOVE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.filter(
+          (item) => item.id !== action.payload.id
+        ),
+      };
+    case actionTypes.FETCH_CARTS:
+      return {
+        ...state,
+        userCarts: action.payload,
+      };
     case actionTypes.ADD_TO_CART:
       const item = state.products.find((item) => item.id === action.payload.id);
       const inCart = state.cart.some((item) => item.id === action.payload.id);
@@ -91,15 +104,36 @@ const userReducer = (state = INITAL_STATE_USERS, action) => {
     case actionTypes.FETCH_USERS:
       return { ...state, users: action.payload };
     case actionTypes.ADD_USER:
-      return null;
+      return state;
     case actionTypes.GET_USER:
       const user = state.users.find((user) => user.id === action.payload.id);
       return {
         ...state,
         currentUser: user,
       };
+    case actionTypes.RESET_CURRENT_USER:
+      return {
+        ...state,
+        currentUser: {
+          address: {
+            city: "",
+            street: "",
+            number: 0,
+            zipcode: "",
+          },
+          id: 0,
+          role: "",
+          email: "",
+          username: "",
+          password: "",
+          name: {
+            firstname: "",
+            lastname: "",
+          },
+          phone: "",
+        },
+      };
     case actionTypes.UPDATE_USER_INFO:
-      console.log(action.payload.addressInfo);
       return {
         ...state,
         users: state.users.map((item) =>

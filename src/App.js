@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import { fetchProducts, fetchUsers } from "./redux/actions";
+import { fetchProducts, fetchUsers, fetchCarts } from "./redux/actions";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
 import ProductPage from "./components/Products/ProductPage/ProductPage";
@@ -11,11 +11,15 @@ import Cart from "./components/Cart/Cart";
 import HomePage from "./components/HomePage/Home";
 import AccountPage from "./components/AccountPage/AccountPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminPage from "./components/AdminPage/AdminPage";
+import AdminProdPage from "./components/AdminPage/ProductAdmin/AdminProdPage/AdminProdPage";
+import AdminCartPage from "./components/AdminPage/AdminCartPage/AdminCartPage";
 
-function App({ fetchProducts, fetchUsers, auth }) {
+function App({ fetchProducts, fetchUsers, auth, user, fetchCarts }) {
   useEffect(() => {
     fetchProducts();
     fetchUsers();
+    fetchCarts();
   }, []);
   return (
     <div className="App">
@@ -33,6 +37,15 @@ function App({ fetchProducts, fetchUsers, auth }) {
           <Route element={<ProtectedRoute isLogged={auth.token !== null} />}>
             <Route path="/account" exact element={<AccountPage />} />
           </Route>
+          <Route element={<ProtectedRoute isLogged={user.role === "admin"} />}>
+            <Route path="/admin" exact element={<AdminPage />} />
+            <Route
+              path="/admin/product/:id"
+              exact
+              element={<AdminProdPage />}
+            />
+            <Route path="/admin/carts" exact element={<AdminCartPage />} />
+          </Route>
         </Routes>
       </Router>
     </div>
@@ -40,7 +53,11 @@ function App({ fetchProducts, fetchUsers, auth }) {
 }
 
 const mapStateToProps = (state) => {
-  return { auth: state.auth };
+  return { auth: state.auth, user: state.users.currentUser };
 };
 
-export default connect(mapStateToProps, { fetchProducts, fetchUsers })(App);
+export default connect(mapStateToProps, {
+  fetchProducts,
+  fetchUsers,
+  fetchCarts,
+})(App);

@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { addUser } from "../../../redux/actions";
 import ReactDOM from "react-dom";
+import { fetchUsers } from "../../../redux/actions";
 import styles from "./SignupModal.module.scss";
 import { connect } from "react-redux";
 
-const SignupModal = ({ open, onClose, addUser }) => {
-  const ref = useRef();
+const SignupModal = ({ open, onClose, addUser, fetchUsers }) => {
   const [info, setInfo] = useState({
     fname: "",
     lname: "",
@@ -29,9 +29,12 @@ const SignupModal = ({ open, onClose, addUser }) => {
       if (info[item].length < 3) return alert("FYLL I ALLT FÖRFAN");
     }
 
-    console.log(info);
     addUser(info);
+    setTimeout(() => {
+      fetchUsers();
+    }, 1000);
     onClose();
+    resetInfoState();
   };
 
   if (!open) return null;
@@ -88,4 +91,4 @@ const SignupModal = ({ open, onClose, addUser }) => {
   );
 };
 
-export default connect(null, { addUser })(SignupModal);
+export default connect(null, { addUser, fetchUsers })(SignupModal);
