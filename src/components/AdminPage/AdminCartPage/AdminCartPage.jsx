@@ -6,12 +6,14 @@ import AdminUserCart from "./AdminUserCart/AdminUserCart";
 const AdminCartPage = ({ carts }) => {
   console.log(carts);
   return (
-    <div>
+    <div className={styles.main}>
       <h2>Carts</h2>
-      <div>
-        {carts.map((item) => (
-          <AdminUserCart key={item.id} cart={item} />
-        ))}
+      <div className={styles.cartpage}>
+        <div className={styles.cartpage__wrapper}>
+          {carts.map((item) => (
+            <AdminUserCart key={item.id} cart={item} />
+          ))}
+        </div>
       </div>
     </div>
   );

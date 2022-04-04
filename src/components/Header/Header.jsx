@@ -13,7 +13,10 @@ const Header = ({ auth, user, signOut, resetCurrentUser }) => {
   const renderAuthButton = () => {
     if (auth.token === null) {
       return (
-        <button onClick={() => setIsLoginModalOpen(true)} className="">
+        <button
+          onClick={() => setIsLoginModalOpen(true)}
+          className={styles.login__btn}
+        >
           Login
         </button>
       );
@@ -25,7 +28,7 @@ const Header = ({ auth, user, signOut, resetCurrentUser }) => {
 
             signOut();
           }}
-          className=""
+          className={styles.signout__btn}
         >
           Sign Out
         </button>
@@ -76,6 +79,7 @@ const Header = ({ auth, user, signOut, resetCurrentUser }) => {
                 onClick={() => {
                   setIsSignupModalOpen(true);
                 }}
+                className={styles.signup__btn}
               >
                 Sign Up
               </button>

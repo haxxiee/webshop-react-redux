@@ -10,4 +10,24 @@
   a {
     text-decoration: none;
   }
+
+  button {
+    outline: 0;
+    border: 0;
+    background: #333;
+    /* border: 1px solid #aedaa6; */
+    border-radius: 4px;
+    padding: 8px 0px;
+    color: #aedaa6;
+    text-transform: uppercase;
+    width: 140px;
+    font-family: inherit;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

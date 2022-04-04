@@ -13,7 +13,6 @@ const ProductAdmin = ({ prod, removeProduct }) => {
             <div>{prod.id}</div>
             <div>{prod.title}</div>
             <div>
-              <button>Edit</button>
               <button
                 onClick={(e) => {
                   e.preventDefault();

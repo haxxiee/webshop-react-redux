@@ -7,11 +7,15 @@ const AdminUserCart = ({ cart, users }) => {
   const user = users.find((user) => user.id === cart.userId);
 
   return (
-    <div>
-      <h3>
-        {user.name.firstname} {user.name.lastname}
-      </h3>
-      <div>
+    <div className={styles.user__products}>
+      <section className={styles.user__products__userinfo}>
+        <h3>
+          {user.name.firstname} {user.name.lastname}
+        </h3>
+        <h4>UserId: {user.id}</h4>
+      </section>
+
+      <div className={styles.user__products__prodinfo}>
         {cart.products.map((item) => (
           <AdminCartProducts key={item.id} product={item} />
         ))}

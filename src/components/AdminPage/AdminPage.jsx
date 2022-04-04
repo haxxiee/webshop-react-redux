@@ -9,7 +9,7 @@ const AdminPage = ({ products }) => {
     <div className={styles.admin__page}>
       <h2>All Products</h2>
       <Link to={"/admin/carts"}>
-        <button>Go to user cart</button>
+        <button>Go to all carts</button>
       </Link>
       <div>
         {products.map((item) => (
