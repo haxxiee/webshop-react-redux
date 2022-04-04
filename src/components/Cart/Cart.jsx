@@ -15,7 +15,7 @@ const Cart = ({ cart }) => {
       totalItems: Object.values(cart).reduce((t, { qty }) => t + qty, 0),
     });
     // Saving to localStorage as "cart"
-    localStorage.setItem("cart", JSON.stringify(cart));
+    // localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   return (
