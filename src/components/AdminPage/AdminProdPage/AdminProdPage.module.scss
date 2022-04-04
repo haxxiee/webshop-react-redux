@@ -1,0 +1,29 @@
+.prodpage {
+  h2 {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    /* max-width: 1000px; */
+
+    .item {
+      padding: 1rem 1rem;
+      margin: 1rem 1rem;
+    }
+    textarea {
+      width: 15rem;
+      height: 5rem;
+    }
+  }
+
+  .btn__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 2rem;
+  }
+}

@@ -15,7 +15,7 @@ const AccountPage = ({ auth, user, getUser, updateUser }) => {
     },
   });
   useEffect(() => {
-    getUser(auth.userId);
+    // getUser(auth.userId);
 
     setUserState({
       phone: user.phone,

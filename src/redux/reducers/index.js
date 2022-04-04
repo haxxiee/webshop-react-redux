@@ -61,6 +61,33 @@ const webshopReducer = (state = INITAL_STATE_WEBSHOP, action) => {
           (item) => item.id !== action.payload.id
         ),
       };
+    case actionTypes.UPDATE_PRODUCT:
+      const test = state.products.map((item) =>
+        item.id === action.payload.id
+          ? {
+              ...item,
+              title: item.title,
+              price: item.price,
+              description: item.description,
+              category: item.category,
+            }
+          : item
+      );
+      console.log(test);
+      return {
+        ...state,
+        products: state.products.map((item) =>
+          item.id === action.payload.id
+            ? {
+                ...item,
+                title: action.payload.title,
+                price: action.payload.price,
+                description: action.payload.description,
+                category: action.payload.category,
+              }
+            : item
+        ),
+      };
     case actionTypes.FETCH_CARTS:
       return {
         ...state,

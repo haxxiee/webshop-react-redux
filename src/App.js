@@ -12,7 +12,7 @@ import HomePage from "./components/HomePage/Home";
 import AccountPage from "./components/AccountPage/AccountPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminPage from "./components/AdminPage/AdminPage";
-import AdminProdPage from "./components/AdminPage/ProductAdmin/AdminProdPage/AdminProdPage";
+import AdminProdPage from "./components/AdminPage/AdminProdPage/AdminProdPage";
 import AdminCartPage from "./components/AdminPage/AdminCartPage/AdminCartPage";
 
 function App({ fetchProducts, fetchUsers, auth, user, fetchCarts }) {

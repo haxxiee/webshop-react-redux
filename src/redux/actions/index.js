@@ -62,6 +62,19 @@ export const removeProduct = (id) => {
   };
 };
 
+export const updateProduct = (prod) => {
+  return {
+    type: actionTypes.UPDATE_PRODUCT,
+    payload: {
+      id: prod.id,
+      title: prod.title,
+      price: prod.price,
+      description: prod.description,
+      category: prod.category,
+    },
+  };
+};
+
 // USER ACTIONS
 export const fetchUsers = () => async (dispatch) => {
   const response = await fakeStore.get("/users");
@@ -80,12 +93,12 @@ export const addUser = (info) => async (dispatch) => {
       lastname: info.lname,
     },
     address: {
-      city: "City",
-      street: "Street City",
-      number: 1337,
-      zipcode: "133-337",
+      city: "kilcoole",
+      street: "7835 new road",
+      number: 3,
+      zipcode: "12926-3874",
     },
-    phone: "074123232323",
+    phone: "1-570-236-7033",
   });
 
   dispatch({ type: actionTypes.ADD_USER, payload: response.data });
