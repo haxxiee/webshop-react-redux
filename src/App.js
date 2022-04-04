@@ -20,7 +20,7 @@ function App({ fetchProducts, fetchUsers, auth, user, fetchCarts }) {
     fetchProducts();
     fetchUsers();
     fetchCarts();
-  }, []);
+  }, [fetchCarts, fetchProducts, fetchUsers]);
   return (
     <div className="App">
       <Router>

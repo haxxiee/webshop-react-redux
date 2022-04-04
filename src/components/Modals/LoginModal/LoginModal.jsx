@@ -11,7 +11,7 @@ const LoginModal = ({ auth, open, onClose, postSignIn, getUser }) => {
     if (auth.userId !== null) {
       getUser(auth.userId);
     }
-  }, [auth.userId]);
+  }, [auth.userId, getUser]);
 
   if (!open) return null;
 

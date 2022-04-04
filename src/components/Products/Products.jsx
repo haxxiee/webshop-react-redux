@@ -11,7 +11,7 @@ const Products = ({ products, cart, filterProducts }) => {
 
   useEffect(() => {
     filterProducts("");
-  }, []);
+  }, [filterProducts]);
 
   return (
     <div className={styles.products__container}>
