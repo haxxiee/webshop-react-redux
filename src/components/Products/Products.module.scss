@@ -13,12 +13,40 @@
     }
   }
 
+  .product__filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 1rem;
+
+    select {
+      width: 10rem;
+      font-size: 16px;
+      padding: 0.5rem 0.5rem;
+
+      border: 1px solid #e8eaed;
+      border-radius: 5px;
+      background: white;
+
+      box-shadow: 0 1px 3px -2px #9098a9;
+
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+        color: #546c84;
+        background-color: #fbfbfb;
+      }
+    }
+  }
+
   .product__grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
-    margin: 4rem 1.55rem;
+    margin: 3rem 1.55rem;
 
     animation: bottomToTop 0.5s;
   }
