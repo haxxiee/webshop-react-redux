@@ -11,6 +11,9 @@ const AdminPage = ({ products }) => {
       <Link to={"/admin/carts"}>
         <button>Go to all carts</button>
       </Link>
+      <Link to={"/admin/users"}>
+        <button>Go to all users</button>
+      </Link>
       <div>
         {products.map((item) => (
           <ProductAdmin key={item.id} prod={item} />

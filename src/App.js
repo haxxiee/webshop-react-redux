@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AdminPage from "./components/AdminPage/AdminPage";
 import AdminProdPage from "./components/AdminPage/AdminProdPage/AdminProdPage";
 import AdminCartPage from "./components/AdminPage/AdminCartPage/AdminCartPage";
+import AdminUsersPage from "./components/AdminPage/AdminUsersPage/AdminUsersPage";
 
 function App({ fetchProducts, fetchUsers, auth, user, fetchCarts }) {
   useEffect(() => {
@@ -45,6 +46,7 @@ function App({ fetchProducts, fetchUsers, auth, user, fetchCarts }) {
               element={<AdminProdPage />}
             />
             <Route path="/admin/carts" exact element={<AdminCartPage />} />
+            <Route path="/admin/users" exact element={<AdminUsersPage />} />
           </Route>
         </Routes>
       </Router>
